@@ -13,7 +13,7 @@ import random
 
 app = Flask(__name__)
 
-TELEGRAM_TOKEN = '2004478698:AAEsHPaCw_mbTsCaxtV2YoTAdmi1cB6N9Rw'  # Thay thế bằng token của bot Telegram của bạn
+TELEGRAM_TOKEN = '2004478698:AAEsHPaCw_mbTsCadddddddddd'  # Thay thế bằng token của bot Telegram của bạn
 TELEGRAM_CHAT_ID = '717154123'  # Thay thế bằng chat ID của bạn hoặc nhóm
 
 NetBox_URL = 'https://172.16.99.43/'
