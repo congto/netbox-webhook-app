@@ -13,7 +13,7 @@ import random
 
 app = Flask(__name__)
 
-TELEGRAM_TOKEN = '2004478698:AAEsHPaCw_mbTdddddddddddddw'  # Thay thế bằng token của bot Telegram của bạn
+TELEGRAM_TOKEN = '2004478698:AAEsHPaCw_mbTsadasd6N9Rw'  # Thay thế bằng token của bot Telegram của bạn
 TELEGRAM_CHAT_ID = '717154123'  # Thay thế bằng chat ID của bạn hoặc nhóm
 
 NetBox_URL = 'https://172.16.99.43/'
@@ -94,21 +94,16 @@ def handle_webhook(data):
     print(data)
     data_event = data['event']
     data_username = data['username']
-    data_username = data['username']        
-    # print("######################")
-    # print(f"Data Event: {data_event}")
-    # print(f"Data username: {data_username}")
-
+    date_time = data['timestamp']
+    device_rack = data['data']['rack']
+    data_data_device_id = data['data']['id']
+    device_name = data['data']['id']
+    device_description = data['data']['description']
+    device_comments = data['data']['comments']    
+    device_position = data['data']['position']
+    
     if data_event == "created":
-        data_event = data['event']
-        data_username = data['username']
-        data_data_device_id = data['data']['id']
-        device_name = data['data']['id']
-        device_description = data['data']['description']
-        device_comments = data['data']['comments']
-        device_rack = data['data']['rack']
-        print(device_rack)
-        
+
         if str(device_rack) =="None":
             device_rack = "KHONG CO GIA TRI"
             device_rack_id = "KHONG CO GIA TRI"
@@ -116,21 +111,11 @@ def handle_webhook(data):
         else:
             device_rack_id = data['data']['rack']['id']
             device_rack = data['data']['rack']['name']
-
-    elif data_event == "updated":
-        
-        # device_rack_id ="None"
-
-        # if data['data']['rack'] == "None":
-        #     device_rack = data['data']['rack']
-
-        # elif data['data']['rack'] != "None":
-        #     device_rack_id = data['data']['rack']['id']
-        #     device_rack = data['data']['rack']['name']
-
-        device_position = data['data']['position']
+ 
 
         print("######################")
+        print(device_rack)
+        print(f"Data Time: {date_time}")
         print(f"Data Event: {data_event}")
         print(f"Data username: {data_username}")
         print(f"Device ID: {data_data_device_id}")
@@ -141,6 +126,30 @@ def handle_webhook(data):
         print(f"Device Rack ID:  {device_rack_id}")
         print(f"Device Position: {device_position}")
 
+    elif data_event == "updated":
+        data_data_device_id = data['data']['id']
+        device_name = data['data']['id']
+        device_description = data['data']['description']
+        device_comments = data['data']['comments']
+
+        print("######################")
+        print(device_rack)
+        print(f"Data Time: {date_time}")
+        print(f"Data Event: {data_event}")
+        print(f"Data username: {data_username}")
+        print(f"Device ID: {data_data_device_id}")
+        print(f"Device Name: {device_name}")
+        print(f"Device Description: {device_description}")
+        print(f"Device Comment: {device_comments}")
+        print(f"Device Rack: {device_rack}")
+        # print(f"Device Rack ID:  {device_rack_id}")
+        print(f"Device Position: {device_position}")
+    
+    
+    else:
+        print("KO CO GI")
+    
+    
     # Hiển thị chi tiết cập nhật nếu có
     # message = "Webhook received!\n"
     # if 'event' in data:
