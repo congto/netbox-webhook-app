@@ -90,7 +90,7 @@ def handle_webhook(data):
     """
     Hàm để xử lý dữ liệu webhook nhận được từ NetBox và in ra màn hình.
     """
-    netbox_connection_check(NetBox_URL, NetBox_Token)
+    # netbox_connection_check(NetBox_URL, NetBox_Token)
     print("Webhook received!")
     print(data)
 
